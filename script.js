@@ -1,6 +1,10 @@
 //document.ready makes sure that everything happens in the right order AND the code goes in between the curly brackets
 $(document ).ready(function() {
- //create click function for search button (call search button by ID
+ //create click function for search button (call search button by ID which is 'searchButton')
+ $("#searchButton").click(function(){
+    event.preventDefault();
+    console.log("this works")
+});
  //add "preventDefault to prevent data from flashing")
  //create variables to build URL
  //var city will be the data key (what gets typed in search bar)
