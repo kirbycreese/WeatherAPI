@@ -7,7 +7,10 @@ $(document ).ready(function() {
 });
  //add "preventDefault to prevent data from flashing")
  //create variables to build URL
+ var city = $("#citySearch").val();
  //var city will be the data key (what gets typed in search bar)
+ var query = "https://openweathermap.org/api" + city + "2dc60d0d91aad8df7c1b4bce6bcf58e0"
+ console.log(query)
  //var query will be query URL + city + api key
  //under that we will need an AJAX function to get data from the API and create variables within for the responses (name of city, temperature, humidity, wind)
 });
