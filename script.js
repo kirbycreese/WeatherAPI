@@ -19,15 +19,21 @@ $(document ).ready(function() {
  
  .then(function (response) {
     console.log(response, "response")
+
   var temperature = response.main.temp
     console.log(response.main.temp,"response.main")
-  $('#weatherinfo').html(temperature + '<br>')
+    $('#weatherinfo').html(temperature + '<br>')
 
-  $('#weatherinfo').append(city + '<br>')
+    $('#weatherinfo').append(city + '<br>')
 
   var conditions = response.weather[0].description
-  //for (let i = 0; i < weather.length; i++)
-$('#weatherinfo').append(conditions + '<br>')
+    $('#weatherinfo').append(conditions + '<br>')
+
+  var humidity = response.main.humidity
+    $('#weatherinfo').append("humidity-" + humidity + '<br>')
+
+  var windspeed = response.wind.speed
+    $('#weatherinfo').append("windspeed-" + windspeed + '<br>')
   
   })
  //then we need a .then function
