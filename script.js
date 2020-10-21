@@ -19,13 +19,15 @@ $(document ).ready(function() {
  
  .then(function (response) {
     console.log(response, "response")
-  var conditions = response.main.temp
+  var temperature = response.main.temp
     console.log(response.main.temp,"response.main")
-    //var htmlText = `${city}
-    //${conditions}`
-  $('#weatherinfo').html(conditions + '<br>')
+  $('#weatherinfo').html(temperature + '<br>')
 
-  $('#weatherinfo').append(city)
+  $('#weatherinfo').append(city + '<br>')
+
+  var conditions = response.weather[0].description
+  //for (let i = 0; i < weather.length; i++)
+$('#weatherinfo').append(conditions + '<br>')
   
   })
  //then we need a .then function
