@@ -16,7 +16,8 @@ $(document ).ready(function() {
     method: "GET"
   })
  //under that we will need an AJAX function to get data from the API and create variables within for the responses (name of city, temperature, humidity, wind)
- 
+ //then we need a .then function
+ //display the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV indedx
  .then(function (response) {
     console.log(response, "response")
 
@@ -34,10 +35,14 @@ $(document ).ready(function() {
 
   var windspeed = response.wind.speed
     $('#weatherinfo').append("windspeed-" + windspeed + '<br>')
+
+    //write out lat and long to link next api inside this .then function
   
-  })
- //then we need a .then function
- //display the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV indedx
-});
- 
-});
+  })//end of first .then function
+
+  //second query
+  //second ajax call
+  //second .then function
+});//end of onclick function
+
+});//end of document.ready function
