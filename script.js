@@ -19,30 +19,41 @@ $(document ).ready(function() {
  //then we need a .then function
  //display the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV indedx
  .then(function (response) {
-    console.log(response, "response")
+    //console.log(response, "response")
 
   var temperature = response.main.temp
     console.log(response.main.temp,"response.main")
-    $('#weatherinfo').html(temperature + '<br>')
+    $('#weatherinfo1').html(temperature + '<br>')
 
-    $('#weatherinfo').append(city + '<br>')
+    $('#cityname').html(city + '<br>')
 
   var conditions = response.weather[0].description
-    $('#weatherinfo').append(conditions + '<br>')
+    $('#weatherinfo2').html(conditions + '<br>')
 
   var humidity = response.main.humidity
-    $('#weatherinfo').append("humidity-" + humidity + '<br>')
+    $('#weatherinfo3').html("humidity-" + humidity + '<br>')
 
   var windspeed = response.wind.speed
-    $('#weatherinfo').append("windspeed-" + windspeed + '<br>')
-
-    //write out lat and long to link next api inside this .then function
+    $('#weatherinfo4').html("windspeed-" + windspeed + '<br>')
   
-  })//end of first .then function
-
+  })//closing first .then function
+   
+  //write out lat and long to link next api inside this .then function
+    var latitude = response.coord.lat
+    var longitude = response.coord.lon
   //second query
-  //second ajax call
-  //second .then function
-});//end of onclick function
+  var query2 = "api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=2dc60d0d91aad8df7c1b4bce6bcf58e0"
 
-});//end of document.ready function
+  //second ajax call
+  $.ajax({
+    url: query2,
+    method: "GET"
+  })//closing ajax call
+
+  //second .then function
+  .then(function (response2) {
+console.log(response2)
+  })//closing second .then function
+});//closing onclick function
+
+});//closing document.ready function
