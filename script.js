@@ -3,13 +3,13 @@ $(document ).ready(function() {
  //create click function for search button (call search button by ID which is 'searchButton')
  $("#searchButton").click(function(){
     event.preventDefault();
-    console.log("this works")
+    //console.log("this works")
 //add "preventDefault to prevent data from flashing")
  //create variables to build URL
  var city = $("#citySearch").val();
  //var city will be the data key (what gets typed in search bar)
  var query = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=2dc60d0d91aad8df7c1b4bce6bcf58e0"
- console.log(city)
+ //console.log(city)
  //var query will be query URL + city + api key
  $.ajax({
     url: query,
@@ -36,13 +36,13 @@ $(document ).ready(function() {
   var windspeed = response.wind.speed
     $('#weatherinfo4').html("windspeed-" + windspeed + '<br>')
   
-  })//closing first .then function
-   
-  //write out lat and long to link next api inside this .then function
-    var latitude = response.coord.lat
-    var longitude = response.coord.lon
+     //write out lat and long to link next api inside this .then function
+     var latitude = response.coord.lat
+     var longitude = response.coord.lon
+     //console.log(latitude, longitude)
+    
   //second query
-  var query2 = "api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=2dc60d0d91aad8df7c1b4bce6bcf58e0"
+  var query2 = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=2dc60d0d91aad8df7c1b4bce6bcf58e0"
 
   //second ajax call
   $.ajax({
@@ -53,7 +53,14 @@ $(document ).ready(function() {
   //second .then function
   .then(function (response2) {
 console.log(response2)
+
+var forecast = response2.list[0].main
+console.log(forecast)
+$('#forecast').html(forecast)
   })//closing second .then function
+//var query3
+  })//closing first .then function
+
 });//closing onclick function
 
 });//closing document.ready function
